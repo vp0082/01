@@ -17,11 +17,3 @@
 .glass {
   @apply bg-white/5 backdrop-blur-lg border border-white/10;
 }
-
-.neon-orange {
-  box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
-}
-
-.neon-orange:hover {
-  box-shadow: 0 0 25px rgba(255, 107, 0, 0.5);
-}
