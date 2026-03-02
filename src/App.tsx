@@ -286,7 +286,7 @@ export default function App() {
                   </div>
                   <div className="flex justify-between text-green-400 font-bold">
                     <span>Cupom: BOASVINDAS</span>
-                    <span>- R$ 0,00</span>
+                    <span>- R$ 10,00</span>
                   </div>
                   <div className="pt-4 border-t border-white/10 flex justify-between items-end">
                     <span className="font-bold">Total a pagar</span>
