@@ -277,7 +277,7 @@ export default function App() {
                 </div>
                 <div className="pt-4 border-t border-white/10 flex justify-between items-end">
                   <span className="font-bold">Total a pagar</span>
-                  <span className="text-4xl font-black text-[#ff6b00] tracking-tighter">R$ 29,90</span>
+                  <span className="text-4xl font-black text-[#ff6b00] tracking-tighter">R$ 19,90</span>
                 </div>
               </div>
 
