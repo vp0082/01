@@ -8,9 +8,14 @@
   <body style="margin: 0; padding: 0; background-color: #00ff00; color: #000000;">
     <div id="root">
       <div style="display: flex; align-items: center; justify-center; height: 100vh; font-family: sans-serif;">
-        <h1>Carregando Aplicativo...</h1>
+        <h1 id="status-text">Carregando Aplicativo...</h1>
       </div>
     </div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      console.log('Inline script running');
+      document.getElementById('status-text').innerText = 'HTML CARREGADO - AGUARDANDO JS MODULE...';
+      document.body.style.backgroundColor = 'yellow';
+    </script>
+    <script type="module" src="src/main.tsx"></script>
   </body>
 </html>
