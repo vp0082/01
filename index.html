@@ -7,8 +7,16 @@
   </head>
   <body style="background-color: purple; color: white; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; font-family: sans-serif;">
     <div id="root">
-      <h1 style="font-size: 3rem;">SE VOCÊ VÊ ROXO, O HTML CARREGOU</h1>
+      <h1 id="status-msg" style="font-size: 3rem;">SE VOCÊ VÊ ROXO, O HTML CARREGOU</h1>
     </div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="src/main.tsx" onerror="document.getElementById('status-msg').innerText = 'ERRO: O ARQUIVO JS NÃO FOI ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
+    <script>
+      setTimeout(() => {
+        if (document.body.style.backgroundColor === 'purple') {
+          document.getElementById('status-msg').innerText = 'O JS CARREGOU MAS NÃO EXECUTOU (ERRO DE SINTAXE?)';
+          document.body.style.backgroundColor = 'brown';
+        }
+      }, 2000);
+    </script>
   </body>
 </html>
