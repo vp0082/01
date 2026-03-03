@@ -1,44 +1,12 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Test - 15:00:00</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Clone - Exclusive Content</title>
   </head>
-  <body style="background: blue; color: white; font-family: sans-serif; text-align: center; padding-top: 100px;">
-    <h1>TESTE DE CARREGAMENTO (HTML OK)</h1>
-    <div id="script-status" style="font-size: 2rem; margin-top: 20px;">AGUARDANDO SCRIPT...</div>
-    <script>
-      document.body.style.backgroundColor = 'orange';
-      console.log('Inline script executado (Laranja)');
-    </script>
-    <div style="margin-top: 20px;">
-      <a href="/meu-script-novo.js" target="_blank" style="color: white; text-decoration: underline;">Testar link direto para script</a> | 
-      <a href="/health" target="_blank" style="color: white; text-decoration: underline;">Testar health check</a> |
-      <a href="/debug-files" target="_blank" style="color: white; text-decoration: underline;">Debug Files</a> |
-      <a href="/logs" target="_blank" style="color: white; text-decoration: underline;">Ver Logs do Servidor</a>
-    </div>
-    <div id="logs-display" style="margin-top: 20px; font-family: monospace; text-align: left; padding: 10px; background: #222; overflow: auto; max-height: 200px; display: none;"></div>
-    <script>
-      console.log('Iniciando carregamento do script...');
-      const script = document.createElement('script');
-      script.src = '/meu-script-novo.js?t=' + Date.now();
-      script.onload = () => console.log('Script onload disparado');
-      script.onerror = async (e) => {
-        console.error('Erro no carregamento do script:', e);
-        document.getElementById('script-status').innerText = 'ERRO NO CARREGAMENTO (VER CONSOLE)';
-        document.body.style.backgroundColor = 'red';
-        
-        // Tentar buscar logs do servidor para entender o que aconteceu
-        try {
-          const res = await fetch('/logs');
-          const logs = await res.text();
-          const logsDiv = document.getElementById('logs-display');
-          logsDiv.style.display = 'block';
-          logsDiv.innerText = 'LOGS DO SERVIDOR:\n' + logs;
-        } catch (err) {
-          console.error('Erro ao buscar logs:', err);
-        }
-      };
-      document.head.appendChild(script);
-    </script>
+  <body class="bg-black text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
