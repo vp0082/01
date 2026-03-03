@@ -14,7 +14,22 @@
         </div>
       </div>
     </div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      console.log('Script inline executado');
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM carregado');
+        const root = document.getElementById('root');
+        if (root) {
+          const testDiv = document.createElement('div');
+          testDiv.style.color = 'lime';
+          testDiv.style.padding = '20px';
+          testDiv.style.fontWeight = 'bold';
+          testDiv.innerText = 'TESTE DE SCRIPT INLINE: OK';
+          root.appendChild(testDiv);
+        }
+      });
+    </script>
+    <script type="module" src="./src/main.tsx"></script>
     <noscript>Você precisa habilitar o JavaScript para ver este site.</noscript>
   </body>
 </html>

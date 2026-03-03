@@ -13,7 +13,7 @@ if (container) {
     console.log('Render call finished');
   } catch (err) {
     console.error('Render error:', err);
-    container.innerHTML = '<h1>Erro ao renderizar React: ' + err.message + '</h1>';
+    container.innerHTML = '<h1 style="color:red">Erro ao renderizar React: ' + err.message + '</h1>';
   }
 } else {
   console.error('Root container NOT found');
