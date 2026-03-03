@@ -6,6 +6,10 @@
   <body style="background: blue; color: white; font-family: sans-serif; text-align: center; padding-top: 100px;">
     <h1>TESTE DE CARREGAMENTO (HTML OK)</h1>
     <div id="script-status" style="font-size: 2rem; margin-top: 20px;">AGUARDANDO SCRIPT...</div>
-    <script src="/test.js" onerror="document.getElementById('script-status').innerText = 'ERRO: /test.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
+    <div style="margin-top: 20px;">
+      <a href="/script.js" style="color: white; text-decoration: underline;">Testar link direto para script.js</a> | 
+      <a href="/health" style="color: white; text-decoration: underline;">Testar health check</a>
+    </div>
+    <script src="/script.js" onerror="document.getElementById('script-status').innerText = 'ERRO: /script.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
   </body>
 </html>
