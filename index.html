@@ -16,6 +16,6 @@
       document.getElementById('status-text').innerText = 'HTML CARREGADO - AGUARDANDO JS MODULE...';
       document.body.style.backgroundColor = 'yellow';
     </script>
-    <script type="module" src="src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" onerror="document.getElementById('status-text').innerText = 'ERRO AO CARREGAR JS MODULE (404 ou Syntax Error)'; document.body.style.backgroundColor = 'red';"></script>
   </body>
 </html>
