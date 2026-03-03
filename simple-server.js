@@ -8,10 +8,22 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
+const logs = [];
 // Request logging middleware
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  const log = `${new Date().toISOString()} - ${req.method} ${req.url}`;
+  console.log(log);
+  logs.push(log);
+  if (logs.length > 100) logs.shift();
+  
+  // Disable CSP for testing
+  res.setHeader("Content-Security-Policy", "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval';");
   next();
+});
+
+app.get('/logs', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(logs.join('\n'));
 });
 
 app.get('/health', (req, res) => {

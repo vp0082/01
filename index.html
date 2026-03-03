@@ -13,17 +13,30 @@
     <div style="margin-top: 20px;">
       <a href="/meu-script-novo.js" target="_blank" style="color: white; text-decoration: underline;">Testar link direto para script</a> | 
       <a href="/health" target="_blank" style="color: white; text-decoration: underline;">Testar health check</a> |
-      <a href="/debug-files" target="_blank" style="color: white; text-decoration: underline;">Debug Files</a>
+      <a href="/debug-files" target="_blank" style="color: white; text-decoration: underline;">Debug Files</a> |
+      <a href="/logs" target="_blank" style="color: white; text-decoration: underline;">Ver Logs do Servidor</a>
     </div>
+    <div id="logs-display" style="margin-top: 20px; font-family: monospace; text-align: left; padding: 10px; background: #222; overflow: auto; max-height: 200px; display: none;"></div>
     <script>
       console.log('Iniciando carregamento do script...');
       const script = document.createElement('script');
       script.src = '/meu-script-novo.js?t=' + Date.now();
       script.onload = () => console.log('Script onload disparado');
-      script.onerror = (e) => {
+      script.onerror = async (e) => {
         console.error('Erro no carregamento do script:', e);
         document.getElementById('script-status').innerText = 'ERRO NO CARREGAMENTO (VER CONSOLE)';
         document.body.style.backgroundColor = 'red';
+        
+        // Tentar buscar logs do servidor para entender o que aconteceu
+        try {
+          const res = await fetch('/logs');
+          const logs = await res.text();
+          const logsDiv = document.getElementById('logs-display');
+          logsDiv.style.display = 'block';
+          logsDiv.innerText = 'LOGS DO SERVIDOR:\n' + logs;
+        } catch (err) {
+          console.error('Erro ao buscar logs:', err);
+        }
       };
       document.head.appendChild(script);
     </script>
