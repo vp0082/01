@@ -6,10 +6,26 @@
   <body style="background: blue; color: white; font-family: sans-serif; text-align: center; padding-top: 100px;">
     <h1>TESTE DE CARREGAMENTO (HTML OK)</h1>
     <div id="script-status" style="font-size: 2rem; margin-top: 20px;">AGUARDANDO SCRIPT...</div>
+    <script>
+      document.body.style.backgroundColor = 'orange';
+      console.log('Inline script executado (Laranja)');
+    </script>
     <div style="margin-top: 20px;">
-      <a href="/script.js" style="color: white; text-decoration: underline;">Testar link direto para script.js</a> | 
-      <a href="/health" style="color: white; text-decoration: underline;">Testar health check</a>
+      <a href="/meu-script-novo.js" target="_blank" style="color: white; text-decoration: underline;">Testar link direto para script</a> | 
+      <a href="/health" target="_blank" style="color: white; text-decoration: underline;">Testar health check</a> |
+      <a href="/debug-files" target="_blank" style="color: white; text-decoration: underline;">Debug Files</a>
     </div>
-    <script src="/script.js?v=2" onerror="document.getElementById('script-status').innerText = 'ERRO: /script.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
+    <script>
+      console.log('Iniciando carregamento do script...');
+      const script = document.createElement('script');
+      script.src = '/meu-script-novo.js?t=' + Date.now();
+      script.onload = () => console.log('Script onload disparado');
+      script.onerror = (e) => {
+        console.error('Erro no carregamento do script:', e);
+        document.getElementById('script-status').innerText = 'ERRO NO CARREGAMENTO (VER CONSOLE)';
+        document.body.style.backgroundColor = 'red';
+      };
+      document.head.appendChild(script);
+    </script>
   </body>
 </html>

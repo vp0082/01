@@ -14,27 +14,37 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files from the root directory
-app.use(express.static(__dirname));
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('/health', (req, res) => {
   res.send('OK');
 });
 
-app.get('/script.js', (req, res) => {
+app.get('/debug-files', (req, res) => {
+  import('fs').then(fs => {
+    res.json({
+      dirname: __dirname,
+      files: fs.readdirSync(__dirname),
+      publicFiles: fs.existsSync(path.join(__dirname, 'public')) ? fs.readdirSync(path.join(__dirname, 'public')) : []
+    });
+  });
+});
+
+app.get('/meu-script-novo.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.send(`
-    console.log('Test script loaded directly from server');
+    console.log('Script novo carregado');
     const statusDiv = document.getElementById('script-status');
     if (statusDiv) {
-      statusDiv.innerText = 'SCRIPT CARREGADO DIRETAMENTE DO SERVIDOR! (VERDE)';
+      statusDiv.innerText = 'NOVO SCRIPT CARREGADO! (VERDE)';
       statusDiv.style.color = 'lime';
     }
     document.body.style.backgroundColor = 'green';
   `);
 });
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
