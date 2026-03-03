@@ -3,8 +3,9 @@
   <head>
     <title>Test</title>
   </head>
-  <body style="background: blue; color: white;">
-    <h1>TESTE DE CARREGAMENTO</h1>
-    <script src="/test.js"></script>
+  <body style="background: blue; color: white; font-family: sans-serif; text-align: center; padding-top: 100px;">
+    <h1>TESTE DE CARREGAMENTO (HTML OK)</h1>
+    <div id="script-status" style="font-size: 2rem; margin-top: 20px;">AGUARDANDO SCRIPT...</div>
+    <script src="/test.js" onerror="document.getElementById('script-status').innerText = 'ERRO: /test.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
   </body>
 </html>
