@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test</title>
+    <title>Test - 15:00:00</title>
   </head>
   <body style="background: blue; color: white; font-family: sans-serif; text-align: center; padding-top: 100px;">
     <h1>TESTE DE CARREGAMENTO (HTML OK)</h1>
@@ -10,6 +10,6 @@
       <a href="/script.js" style="color: white; text-decoration: underline;">Testar link direto para script.js</a> | 
       <a href="/health" style="color: white; text-decoration: underline;">Testar health check</a>
     </div>
-    <script src="/script.js" onerror="document.getElementById('script-status').innerText = 'ERRO: /script.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
+    <script src="/script.js?v=2" onerror="document.getElementById('script-status').innerText = 'ERRO: /script.js NÃO ENCONTRADO (404)'; document.body.style.backgroundColor = 'red';"></script>
   </body>
 </html>

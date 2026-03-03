@@ -24,7 +24,16 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/script.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'script.js'));
+  res.setHeader('Content-Type', 'application/javascript');
+  res.send(`
+    console.log('Test script loaded directly from server');
+    const statusDiv = document.getElementById('script-status');
+    if (statusDiv) {
+      statusDiv.innerText = 'SCRIPT CARREGADO DIRETAMENTE DO SERVIDOR! (VERDE)';
+      statusDiv.style.color = 'lime';
+    }
+    document.body.style.backgroundColor = 'green';
+  `);
 });
 
 app.get('/', (req, res) => {
