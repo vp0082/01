@@ -3,33 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Clone - Exclusive Content</title>
+    <title>Privacy Clone</title>
   </head>
-  <body class="bg-black text-white">
-    <div id="root">
-      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif;">
-        <div style="text-align: center;">
-          <h2 style="color: #F27D26;">Carregando PRIVACY...</h2>
-          <p style="color: #666; font-size: 0.8rem;">Se a tela permanecer branca, verifique o console do navegador.</p>
-        </div>
-      </div>
-    </div>
-    <script>
-      console.log('Script inline executado');
-      document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOM carregado');
-        const root = document.getElementById('root');
-        if (root) {
-          const testDiv = document.createElement('div');
-          testDiv.style.color = 'lime';
-          testDiv.style.padding = '20px';
-          testDiv.style.fontWeight = 'bold';
-          testDiv.innerText = 'TESTE DE SCRIPT INLINE: OK';
-          root.appendChild(testDiv);
-        }
-      });
-    </script>
-    <script type="module" src="./src/main.tsx"></script>
-    <noscript>Você precisa habilitar o JavaScript para ver este site.</noscript>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
