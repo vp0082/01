@@ -3,10 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Clone - Exclusive Content</title>
+    <title>TESTE INLINE</title>
+    <style>
+      body { background-color: #000; color: #fff; font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; flex-direction: column; }
+      h1 { font-size: 2rem; }
+    </style>
   </head>
-  <body class="bg-black">
+  <body>
+    <h1>SE VOCÊ VÊ ISSO, O HTML ESTÁ OK</h1>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      console.log('Script inline carregado');
+      document.body.innerHTML += '<h2 style="color: yellow; text-align: center;">SCRIPT INLINE OK!</h2>';
+      
+      // Tentar carregar o React dinamicamente
+      import React from 'https://esm.sh/react@19';
+      import { createRoot } from 'https://esm.sh/react-dom@19/client';
+      
+      const App = () => React.createElement('h1', { style: { color: 'cyan' } }, 'REACT VIA ESM.SH OK!');
+      
+      const container = document.getElementById('root');
+      if (container) {
+        const root = createRoot(container);
+        root.render(React.createElement(App));
+      }
+    </script>
   </body>
 </html>
